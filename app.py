@@ -3,7 +3,13 @@ from datetime import datetime
 
 from flask import Flask, render_template, jsonify
 
+from csv2json import read_csv
+
 app = Flask(__name__)
+
+
+with open('data.json', 'w') as f:
+    json.dump(read_csv('data.csv'), f)
 
 
 @app.route('/')
@@ -22,7 +28,7 @@ def _textulize_visit_time(point):
 @app.route('/api/dangerZone')
 def api_dz():
     visit_dict = {}
-    with open('positions.json') as f:
+    with open('data.json') as f:
         points = json.load(f)
         for point in points:
             pos = tuple(point['position'])
