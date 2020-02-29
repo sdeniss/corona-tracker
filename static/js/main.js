@@ -11,7 +11,7 @@ ngApp.controller('baseController', function($scope, $http){
         center: $scope.is_mobile? [34.887284,32.180752] : [35.1974386,31.7661587],
         zoom: 8
     });
-    map.addControl(new mapboxgl.NavigationControl(), 'top-left');
+    map.addControl(new mapboxgl.NavigationControl(), 'bottom-left');
 
 
     var data = [];
