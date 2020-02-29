@@ -47,3 +47,13 @@ body {
     color: #8c8c8c;
     font-family: OpenSansHebrew, sans-serif;
 }
+
+.menu-bar {
+    background-color: #2b2b2b;
+    color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+}
