@@ -5,7 +5,7 @@ ngApp.controller('baseController', function($scope, $http){
     var map = new mapboxgl.Map({
         container: 'map',
         style: 'mapbox://styles/mapbox/light-v10', //streets-v11 or light-v10
-        center: [35.0258957,31.5435208],
+        center: [35.1974386,31.7661587],
         zoom: 8
     });
 
