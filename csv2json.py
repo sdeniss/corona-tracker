@@ -19,7 +19,7 @@ def read_csv(filename):
                             "description": descriptioin,
                             "t_start": t_start,
                             "t_end": t_end,
-                            "link": ""})
+                            "link": link})
 
     return result
 

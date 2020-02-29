@@ -1,5 +1,7 @@
 import json
 from datetime import datetime
+from os import listdir
+from os.path import join, dirname
 
 from flask import Flask, render_template, jsonify
 
@@ -8,8 +10,16 @@ from csv2json import read_csv
 app = Flask(__name__)
 
 
-with open('data.json', 'w') as f:
-    json.dump(read_csv('data.csv'), f)
+def load():
+    data = []
+    dir = join(dirname(__file__), 'data')
+    for fname in listdir(dir):
+        data += read_csv(join(dir, fname))
+    with open('data.json', 'w') as f:
+        json.dump(data, f)
+
+
+load()
 
 
 @app.route('/')
