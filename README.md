@@ -1,11 +1,6 @@
 # Corona Tracker
 This repository is the source code for: http://corona-tracker.com
 
-## About
-This is a Flask+AngularJS webapp to track the locations that newly discovered COVID-19 patients have visited, so users can self-quarantine if they have come in contact with them.
-
-The data is loaded from CSV files in *data/* at the moment due to time constraints. Will switch to a db later.
-
 ## Vision
 This project ais open to everyone to see, use, and contribute to.
 
@@ -16,6 +11,11 @@ Why?
 The only way to prevent competing apps and platforms, each of which would have their own incomplete set of data points, would hinder the global fight against this potentially devastating threat to our health, economy and society as a whole.
 
 So here's our first try at an API.
+
+## About
+This is a Flask+AngularJS webapp to track the locations that newly discovered COVID-19 patients have visited, so users can self-quarantine if they have come in contact with them.
+
+The data is loaded from CSV files in *data/* at the moment due to time constraints. Will switch to a db later.
 
 ## API
 There's only one request now. We will expand the API in the coming weeks.
@@ -43,7 +43,7 @@ A list of points in the following format:
     "t_end": 154847374,
     "label": "The Red Pirate",
     "description": "A tourist from Korea visited this location recently",
-    "link": "https://cnn.com/article1234"
+    "link": "https://www.cnn.com/article1234"
   }
 ]
 ```
