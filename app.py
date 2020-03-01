@@ -61,5 +61,12 @@ def api_dz():
     return jsonify(result)
 
 
+@app.route('/api/v1/dangerZone/<position>')
+def public_api_dz(position):
+    with open('data.json') as f:
+        points = json.load(f)
+    return jsonify(list(points))
+
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0')

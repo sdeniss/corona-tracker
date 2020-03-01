@@ -39,11 +39,14 @@ A list of points in the following format:
 [
   {
     "position": [31.2473, 32.4626],
-    "t_start": 152947445,
-    "t_end": 154847374,
+    "t_start": "2020-02-22T11:00:00+02:00",
+    "t_end": "2020-02-22T13:00:00+02:00",
     "label": "The Red Pirate",
     "description": "A tourist from Korea visited this location recently",
     "link": "https://www.cnn.com/article1234"
   }
 ]
 ```
+
+
+Try in here: http://corona-tracker/api/v1/dangerZone/32,31?radius=3000
