@@ -20,6 +20,10 @@ body {
     direction: rtl;
     text-align: right;
 }
+
+a{text-decoration: none;}
+
+
 .mapPopup {
     text-align: right;
     direction: rtl;
@@ -56,4 +60,20 @@ body {
     left: 0;
     right: 0;
     height: 60px;
+}
+
+.map-dialogue-more-btn {
+    width: 100%;
+    background: #009eff;
+    color: white;
+    text-decoration: none;
+    padding: 5px 10px;
+    margin-right: -10px;
+    text-align: center;
+    margin-bottom: -15px;
+}
+
+
+.map-dialogue-place-title {
+    font-size: 17px;
 }

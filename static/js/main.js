@@ -103,9 +103,9 @@ ngApp.controller('baseController', function($scope, $http){
                         'type': 'Feature',
                         'properties': {
                             'description':
-                                '<strong>' + point.label + '</strong>' +
-                                '<p>' + point.description + '</p>' +
-                                '<a href="' + point.link + '" target="_blank" title="Opens in a new window">עוד</a> ',
+                                '<strong class="map-dialogue-place-title">' + point.label + '</strong>' +
+                                '<p>' + point.description + '</p>' + (point.link ?
+                                    ('<a ng-if="1==0" href="' + point.link + '" target="_blank" title="Opens in a new window"><div class="map-dialogue-more-btn">עוד ></div></a> ') : ''),
                             'icon': 'theatre'
                         },
                         'geometry': {
