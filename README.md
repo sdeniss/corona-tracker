@@ -49,4 +49,4 @@ A list of points in the following format:
 ```
 
 
-Try in here: http://corona-tracker/api/v1/dangerZone/32,31?radius=3000
+Try in here: http://corona-tracker.com/api/v1/dangerZone/32,31?radius=3000
