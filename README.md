@@ -8,7 +8,7 @@ This project ais open to everyone to see, use, and contribute to.
 
 Why?
 
-The only way to prevent competing apps and platforms, each of which would have their own incomplete set of data points, would hinder the global fight against this potentially devastating threat to our health, economy and society as a whole.
+This is the only way to prevent competing apps and platforms, each of which would have their own incomplete set of data points, which would hinder the global fight against this potentially devastating threat to our health, economy and society as a whole.
 
 So here's our first try at an API.
 
