@@ -2,7 +2,7 @@
 This repository is the source code for: http://corona-tracker.com
 
 ## Vision
-This project ais open to everyone to see, use, and contribute to.
+This project aims open to everyone to see, use, and contribute to.
 
 **We mean to create a universal DB and standard for COVID-19 patient location tracking.**
 
