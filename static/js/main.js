@@ -7,7 +7,7 @@ ngApp.controller('baseController', function($scope, $http){
     mapboxgl.accessToken = 'pk.eyJ1Ijoic2RlbmlzcyIsImEiOiJjazc2eWhrc3AwMjdnM2ZwOTh5emc0YTk3In0.GLdzpbgoNIp_CfhfRpkT0g';
     var map = new mapboxgl.Map({
         container: 'map',
-        style: 'mapbox://styles/mapbox/light-v10', //streets-v11 or light-v10
+        style: 'mapbox://styles/mapbox/streets-v11', //streets-v11 or light-v10
         center: $scope.is_mobile? [34.887284,32.180752] : [35.1974386,31.7661587],
         zoom: 8
     });
