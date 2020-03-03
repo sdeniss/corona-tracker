@@ -2,6 +2,8 @@ var ngApp = angular.module('app', ['relativeDate']);
 
 ngApp.controller('baseController', function($scope, $http){
 
+    $scope.show_help = true;
+
     $scope.is_mobile = screen.height / screen.width >= 4/3;
 
     mapboxgl.accessToken = 'pk.eyJ1Ijoic2RlbmlzcyIsImEiOiJjazc2eWhrc3AwMjdnM2ZwOTh5emc0YTk3In0.GLdzpbgoNIp_CfhfRpkT0g';
@@ -70,6 +72,13 @@ ngApp.controller('baseController', function($scope, $http){
                 center: coordinates,
                 zoom: 16
             });
+        });
+
+        map.on('touchstart', function(e) {
+            if ($scope.show_help) {
+                $scope.show_help = false;
+                $scope.$apply();
+            }
         });
 
         // Change the cursor to a pointer when the mouse is over the places layer.

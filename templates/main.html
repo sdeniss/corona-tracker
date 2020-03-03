@@ -14,7 +14,7 @@
     <script src='https://api.mapbox.com/mapbox-gl-js/v1.8.0/mapbox-gl.js'></script>
     <link href='https://api.mapbox.com/mapbox-gl-js/v1.8.0/mapbox-gl.css' rel='stylesheet' />
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
-    <script src="static/js/main.js"></script>
+    <script src="static/js/main.js?t=1"></script>
     <script src="{{ url_for('static', filename='js/angular-relative-date.min.js') }}"></script>
     <link href='static/css/main.css' rel='stylesheet' />
     <title>מפת מסלולי חולי קורונה בישראל - Corona Tracker</title>
@@ -51,7 +51,7 @@
         </div>
     </div>
 
-    <div style="position:fixed; width: auto; right: 10px; left: 10px; bottom: 10px; padding-top: 25px;z-index: 9999999" ng-show="is_mobile" class="card">
+    <div style="position:fixed; width: auto; right: 10px; left: 10px; bottom: 10px; padding-top: 25px;z-index: 9999999" ng-show="is_mobile" ng-if="show_help" class="card">
         <h2 class="card-title" style="margin: 0">ניטור קורונה בזמן אמת</h2>
         <p class="card-description" style="font-size: 16px;">        כאן תוכלו להתעדכן בכל המקומות שבהם ביקרו נשאים, בהתאם להודעות משרד הבריאות.<br>לחצו על נקודה כדי לראות עוד.<br>(אגב, אנחנו עובדים גם על אפליקציה שתהיה מוכנה בקרוב!)</p>
     </div>
