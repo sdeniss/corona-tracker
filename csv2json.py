@@ -14,11 +14,13 @@ def read_csv(filename):
             t_end = row['end time'].strip()
             descriptioin = row['description'].strip()
             link = row['link'].strip()
+            # TODO: Set radius in CSV file, not here
             result.append({"position": location,
                             "label": place_name,
                             "description": descriptioin,
                             "t_start": t_start,
                             "t_end": t_end,
+                            "radius": 15,
                             "link": link})
 
     return result
