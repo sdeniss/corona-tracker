@@ -6,6 +6,9 @@ ngApp.controller('baseController', function($scope, $http){
 
     $scope.is_mobile = screen.height / screen.width >= 4/3;
 
+    var userAgent = navigator.userAgent.toLowerCase();
+    $scope.is_android = userAgent.indexOf("android") > -1;
+
     mapboxgl.accessToken = 'pk.eyJ1Ijoic2RlbmlzcyIsImEiOiJjazc2eWhrc3AwMjdnM2ZwOTh5emc0YTk3In0.GLdzpbgoNIp_CfhfRpkT0g';
     var map = new mapboxgl.Map({
         container: 'map',

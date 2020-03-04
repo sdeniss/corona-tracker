@@ -14,7 +14,7 @@
     <script src='https://api.mapbox.com/mapbox-gl-js/v1.8.0/mapbox-gl.js'></script>
     <link href='https://api.mapbox.com/mapbox-gl-js/v1.8.0/mapbox-gl.css' rel='stylesheet' />
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
-    <script src="static/js/main.js?t=1"></script>
+    <script src="static/js/main.js?t=2"></script>
     <script src="{{ url_for('static', filename='js/angular-relative-date.min.js') }}"></script>
     <link href='static/css/main.css' rel='stylesheet' />
     <title>מפת מסלולי חולי קורונה בישראל - Corona Tracker</title>
@@ -54,13 +54,16 @@
     <div style="position:fixed; width: auto; right: 10px; left: 10px; bottom: 10px; padding-top: 25px;z-index: 9999999" ng-show="is_mobile" ng-if="show_help" class="card">
         <h2 class="card-title" style="margin: 0">ניטור קורונה בזמן אמת</h2>
         <p class="card-description" style="font-size: 16px;">        כאן תוכלו להתעדכן בכל המקומות שבהם ביקרו נשאים, בהתאם להודעות משרד הבריאות.<br>לחצו על נקודה כדי לראות עוד.<br>נספרו עד היום 15 חולים, אנחנו מעדכנים עם כל חידוש של משרד הבריאות.</p>
-        <div style="text-align: center">
+        <div style="text-align: center" ng-if="is_android">
             <a href="https://play.google.com/store/apps/details?id=com.sdeniss.coronatracker"
-        style="background: #009eff; border-radius: 10px; color: white; padding: 10px 20px; display: block">הורידו את האפליקציה</a>
+        style="background: #009eff; border-radius: 10px; color: white; padding: 10px 20px; display: block">הורדת האפליקציה</a>
             <br>
-            (אנדרואיד בלבד, נשחרר iOS בסוף השבוע)
+            <span style="color: #868686;">(אנדרואיד בלבד, נשחרר iOS בסוף השבוע)</span>
         </div>
     </div>
+
+    <a href="https://play.google.com/store/apps/details?id=com.sdeniss.coronatracker" ng-if="is_android && !show_help"
+        style="background: #009eff; border-radius: 10px; color: white; padding: 10px 20px; display: block; position: fixed; bottom: 10px;left: 50%;margin-left: -86px;">הורדת האפליקציה</a>
 
 </body>
 </html>
