@@ -9,7 +9,7 @@ def read_csv(filename):
             place_name = row['label'].strip()
             location = row['position']
             location = row['position'].split(',')
-            location = float(location[1].strip()), float(location[0].strip())
+            location = float(location[0].strip()), float(location[1].strip())
             t_start = row['start time'].strip()
             t_end = row['end time'].strip()
             descriptioin = row['description'].strip()
