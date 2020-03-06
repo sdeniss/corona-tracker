@@ -1,9 +1,10 @@
 import csv
 import json
 
-def read_csv(filename):
+# Returns true if json was updated
+def update_json(json_filename):
     result = []
-    with open(filename, newline='') as f:
+    with open('data/data.csv', newline='') as f:
         reader = csv.DictReader(f)
         for row in reader:
             place_name = row['label'].strip()
@@ -25,7 +26,32 @@ def read_csv(filename):
                             "radius": 15,
                             "link": link})
 
-    return result
 
-with open('data/data.json', 'w', encoding='utf-8') as f:
-    json.dump(read_csv('data/data.csv'), f, ensure_ascii=False, indent=4)
+    previous_data = ''
+    try:
+        with open(json_filename, 'r') as f:
+            previous_data = f.read()
+    except FileNotFoundError:
+        # Do nothing
+        pass
+
+               
+    with open(json_filename, 'w+', encoding='utf-8') as f:
+        json.dump(result, f, ensure_ascii=False, indent=4)
+
+    # Compare current to previous
+    current_data = ''
+    with open(json_filename, 'r') as f:
+        current_data = f.read()
+    
+    if (current_data == previous_data):
+        print("No changes to " + json_filename)
+        return False
+    else:
+        print("There were changes to " + json_filename)
+        return True
+
+if __name__ == '__main__':
+    update_json('data/data.json')
+
+
