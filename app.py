@@ -5,21 +5,16 @@ from os.path import join, dirname
 
 from flask import Flask, render_template, jsonify
 
-from csv2json import read_csv
+from csv2json import update_json
 
 app = Flask(__name__)
 
 
-def load():
-    data = []
-    dir = join(dirname(__file__), 'data')
-    for fname in listdir(dir):
-        data += read_csv(join(dir, fname))
-    with open('data.json', 'w') as f:
-        json.dump(data, f)
+def check():
+    assert not update_json('data/data.json'), "data/data.json is not up-to-date. Please run python3 csv2json.py"
 
 
-load()
+check()
 
 
 @app.route('/')
@@ -38,7 +33,7 @@ def _textulize_visit_time(point):
 @app.route('/api/dangerZone')
 def api_dz():
     visit_dict = {}
-    with open('data.json') as f:
+    with open('data/data.json') as f:
         points = json.load(f)
         for point in points:
             pos = tuple(point['position'])
@@ -63,7 +58,7 @@ def api_dz():
 
 @app.route('/api/v1/dangerZone/<position>')
 def public_api_dz(position):
-    with open('data.json') as f:
+    with open('data/data.json') as f:
         points = json.load(f)
     return jsonify(list(points))
 
