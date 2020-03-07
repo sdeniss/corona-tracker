@@ -48,5 +48,11 @@ A list of points in the following format:
 ]
 ```
 
+## Static data
+We also have static data you can copy under `data` folder.
+It's organized by date: `merged_data_8` is for all cases that happened in the last 8 days.
+If the same location exact had multiple cases, they are merged and their description shows all of them.
+
+
 
 Try in here: http://corona-tracker.com/api/v1/dangerZone/32,31?radius=3000
