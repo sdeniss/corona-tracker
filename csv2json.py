@@ -2,8 +2,7 @@ import csv
 import json
 from datetime import date, datetime, timedelta, timezone
 
-# Returns true if json was updated
-def update_json(json_filename):
+def get_points_from_csv():
     result = []
     with open('data/data.csv', newline='') as f:
         reader = csv.DictReader(f)
@@ -34,32 +33,9 @@ def update_json(json_filename):
                             "t_end_ts": t_end_unix_timestamp,
                             "radius": 15,
                             "link": link})
+    return result
 
-    previous_data = ''
-    try:
-        with open(json_filename, 'r') as f:
-            previous_data = f.read()
-    except FileNotFoundError:
-        # Do nothing
-        pass
-
-               
-    with open(json_filename, 'w+', encoding='utf-8') as f:
-        json.dump(result, f, ensure_ascii=False, indent=4)
-
-    # Compare current to previous
-    current_data = ''
-    with open(json_filename, 'r') as f:
-        current_data = f.read()
-    
-    if (current_data == previous_data):
-        print("No changes to " + json_filename)
-        return False
-    else:
-        print("There were changes to " + json_filename)
-        return True
-
-
+              
 def _textulize_visit_datetime(point):
     start = point['t_start']
     end = point['t_end']
@@ -137,15 +113,16 @@ def merge_points_by_date(points, daysAgo):
 
 
 if __name__ == '__main__':
-    update_json('data/data.json')
+    points = get_points_from_csv()
 
-    points = []
-    with open('data/data.json') as f:
-        points = json.load(f)
+    with open('data/data.json', 'w+', encoding='utf-8') as f:
+        json.dump(points, f, ensure_ascii=False, indent=4)
 
     for daysAgo in range(15):
         with open('data/merged_data_%d.json' % daysAgo, 'w', encoding='utf-8') as f:
-            json.dump(merge_points_by_date(points, daysAgo), f, ensure_ascii=False, indent=4)
+            result = merge_points_by_date(points, daysAgo)
+            print(result)
+            json.dump(result, f, ensure_ascii=False, indent=4)
 
     with open('data/merged_data_all.json', 'w', encoding='utf-8') as f:
         json.dump(merge_points_by_date(points, None), f, ensure_ascii=False, indent=4)

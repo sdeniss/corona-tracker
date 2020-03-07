@@ -5,16 +5,19 @@ from os.path import join, dirname
 
 from flask import Flask, render_template, jsonify
 
-from csv2json import update_json
+import csv2json
 
 app = Flask(__name__)
+points = []
+merged_points = []
 
+def load():
+    global points
+    global merged_points
+    points = csv2json.get_points_from_csv()
+    merged_points = csv2json.merge_points_original(points)
 
-def check():
-    assert not update_json('data/data.json'), "data/data.json is not up-to-date. Please run python3 csv2json.py"
-
-
-check()
+load()
 
 
 @app.route('/')
@@ -24,16 +27,14 @@ def hello_world():
 
 @app.route('/api/dangerZone')
 def api_dz():
-    points = []
-    with open('data/merged_data_all_original.json') as f:
-        points = json.load(f)
-    return jsonify(list(points))
+    global merged_points
+    print(merged_points)
+    return jsonify(list(merged_points))
 
 
 @app.route('/api/v1/dangerZone/<position>')
 def public_api_dz(position):
-    with open('data/data.json') as f:
-        points = json.load(f)
+    global points
     return jsonify(list(points))
 
 
