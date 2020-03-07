@@ -28,7 +28,6 @@ def hello_world():
 @app.route('/api/dangerZone')
 def api_dz():
     global merged_points
-    print(merged_points)
     return jsonify(list(merged_points))
 
 
