@@ -5,16 +5,21 @@ from os.path import join, dirname
 
 from flask import Flask, render_template, jsonify
 
-from csv2json import update_json
+import csv2json
 
 app = Flask(__name__)
 
+points = []
+merged_points = []
 
-def check():
-    assert not update_json('data/data.json'), "data/data.json is not up-to-date. Please run python3 csv2json.py"
+def load():
+    global points
+    global merged_points
+    points = csv2json.get_points_from_csv()
+    merged_points = csv2json.merge_points_original(points)
 
 
-check()
+load()
 
 
 @app.route('/')
@@ -22,44 +27,15 @@ def hello_world():
     return render_template('main.html')
 
 
-def _textulize_visit_time(point):
-    start = point['t_start']
-    end = point['t_end']
-    dt_start = datetime.fromisoformat(start)
-    dt_end = datetime.fromisoformat(end)
-    return '%s בין השעות %s-%s' % (dt_start.strftime('%d/%m'), dt_start.strftime('%H:%M'), dt_end.strftime('%H:%M'))
-
-
 @app.route('/api/dangerZone')
 def api_dz():
-    visit_dict = {}
-    with open('data/data.json') as f:
-        points = json.load(f)
-        for point in points:
-            pos = tuple(point['position'])
-            if pos not in visit_dict:
-                visit_dict[pos] = [point]
-            else:
-                visit_dict[pos].append(point)
-
-    result = []
-
-    for points in visit_dict.values():
-        point = dict(points[0])
-        point['description'] += '<br><br><b>שעות ביקור:</b><br>'
-
-        for p_ in points:
-            point['description'] += '<li>' + _textulize_visit_time(p_)
-
-        result.append(point)
-
-    return jsonify(result)
+    global merged_points
+    return jsonify(list(merged_points))
 
 
 @app.route('/api/v1/dangerZone/<position>')
 def public_api_dz(position):
-    with open('data/data.json') as f:
-        points = json.load(f)
+    global points
     return jsonify(list(points))
 
 
