@@ -5,8 +5,6 @@ from os.path import join, dirname
 
 from flask import Flask, render_template, jsonify
 
-from csv2json import read_csv
-
 app = Flask(__name__)
 
 
