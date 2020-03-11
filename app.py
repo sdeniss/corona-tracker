@@ -8,16 +8,6 @@ from flask import Flask, render_template, jsonify
 import csv2json
 
 app = Flask(__name__)
-points = []
-merged_points = []
-
-def load():
-    global points
-    global merged_points
-    points = csv2json.get_points_from_csv()
-    merged_points = csv2json.merge_points_original(points)
-
-load()
 
 
 @app.route('/')
@@ -27,14 +17,14 @@ def hello_world():
 
 @app.route('/api/dangerZone')
 def api_dz():
-    global merged_points
-    return jsonify(list(merged_points))
+    with open('merged_points.json') as f:
+        return jsonify(json.load(f))
 
 
 @app.route('/api/v1/dangerZone/<position>')
 def public_api_dz(position):
-    global points
-    return jsonify(list(points))
+    with open('points.json') as f:
+        return jsonify(json.load(f))
 
 
 if __name__ == '__main__':
