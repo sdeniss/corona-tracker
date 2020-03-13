@@ -1,5 +1,7 @@
 # Corona Tracker
-This repository is the source code for: http://corona-tracker.com
+This repository is the source code for the data for:
+* [CoronaShield app](https://play.google.com/store/apps/details?id=com.sdeniss.coronatracker) (code at https://github.com/sdeniss/corona-tracker-app)
+* http://israelcoronamap.co.il  (code at https://github.com/oferb/coronavirus-notifier)
 
 ## Vision
 This project aims open to everyone to see, use, and contribute to.
@@ -13,9 +15,7 @@ This is the only way to prevent competing apps and platforms, each of which woul
 So here's our first try at an API.
 
 ## About
-This is a Flask+AngularJS webapp to track the locations that newly discovered COVID-19 patients have visited, so users can self-quarantine if they have come in contact with them.
-
-The data is loaded from CSV files in *data/* at the moment due to time constraints. Will switch to a db later.
+The data is loaded from a CSV file in *data/data.csv*.
 
 ## API
 There's only one request now. We will expand the API in the coming weeks.
