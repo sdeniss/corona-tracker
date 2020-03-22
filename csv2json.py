@@ -121,5 +121,5 @@ def merge_points_by_date(points, daysAgo):
 if __name__ == '__main__':
     points = get_points_from_csv()
 
-    with open('data/merged_data_all.json', 'w', encoding='utf-8') as f:
+    with open('data/data.json', 'w', encoding='utf-8') as f:
         json.dump(merge_points_by_date(points, None), f, ensure_ascii=False, indent=4)
